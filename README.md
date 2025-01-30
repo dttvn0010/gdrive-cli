@@ -5,7 +5,7 @@
 
 ### Download credentials:  
   
-    Download file "credentials.json" from [GCP Console](https://developers.google.com/drive/api/quickstart/python#authorize_credentials_for_a_desktop_application) and put it at folder "~/.gdrive"  
+Download file "credentials.json" from [GCP Console](https://developers.google.com/drive/api/quickstart/python#authorize_credentials_for_a_desktop_application) and put it at folder "~/.gdrive"  
 
 
 ### Usage:  
