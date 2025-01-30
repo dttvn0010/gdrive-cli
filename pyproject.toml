@@ -3,7 +3,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gdrive-cli"
+name = "py-gdrive-cli"
+version = "0.0.1"
 authors = [
     {name="Tung Duong", email="duongthanhtungvn01@gmail.com"},
 ]
@@ -17,7 +18,6 @@ dependencies=[
     "google-auth-httplib2",  
     "google-auth-oauthlib"
 ]
-dynamic = ["version"]
 
 [project.scripts]
 gdrive = "gdrive_client:main"

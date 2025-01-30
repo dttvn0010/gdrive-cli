@@ -1,7 +1,7 @@
 ## Google Drive Client CLI
 
 ### Install:  
-    pip install gdrive-cli
+    pip install py-gdrive-cli
 
 ### Download credentials:  
   
