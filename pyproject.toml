@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gdrive-cli"
-author = [
+authors = [
     {name="Tung Duong", email="duongthanhtungvn01@gmail.com"},
 ]
 description = "CLI tool to manage and interact with Google Drive Client API"
