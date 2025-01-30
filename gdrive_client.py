@@ -131,15 +131,25 @@ def download_folder(service, folder_id, output_path, quite=False):
 def upload_file(service, input_path, parent_id=None, target_name=None):
     mime = MimeTypes()
     mimetype = mime.guess_type(input_path)[0]
-    media = MediaFileUpload(input_path, mimetype=mimetype)
-    service.files().create(
+    media = MediaFileUpload(input_path, mimetype=mimetype, resumable=True)
+    request = service.files().create(
         body={
             'parents': [parent_id] if parent_id else None,
             'name': target_name or os.path.split(input_path)[-1]
         },
         media_body=media,
         fields='id'
-    ).execute()
+    )
+    media.stream()
+    done = False
+    while not done:
+        status, done = request.next_chunk()
+        if status is not None:
+            pctg = int(status.progress() * 100)
+            sys.stdout.write('\r')
+            sys.stdout.write("[%-100s] %d%%" % ('='*pctg, pctg))
+            sys.stdout.flush()
+        
 
 def create_folder(service, parent_id, name) -> DriveItem:
     response = service.files().create(body={
@@ -277,3 +287,6 @@ def main():
             remove_item(service, item.id)
         else:
             print(f"No file/folder exists at path: {path}")
+
+if __name__ == '__main__':
+    main()
